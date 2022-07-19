@@ -1,0 +1,7 @@
+fiber
+react15之前,采用递归的方式创建虚拟DOM,递归的过程是不能被打断的,如果组件树的层级很深,递归会占用线程很多时间,造成卡顿。为了解决这个问题, react16将递归中无法中断的更新重构为异步的可中断更新。
+所以一个任务可能还没更新完, 就被另一个更高优先级的任务打断, 低优先级的任务会作废, 下次需要重新再来
+有了fiber之后, 渲染和更新分为2个阶段, render阶段和commit阶段。 render阶段可以被打断,下次重新执行,commit阶段不能被打断。render阶段的生命周期有componentWillMount, componentWillReceiveProps,shouldComponentUpdate,componentWillUpdate 所以他们都是UNSAFE_
+
+
+diff算法
